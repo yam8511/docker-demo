@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  my-server:
+    image: nginx:latest
+    ports:
+      - "3000:80"
+    volumes:
+      # - ./code:/code
+      - ./config:/etc/nginx/conf.d
+    depends_on:
+      - my-php
+
+  my-php:
+    image: php:7-fpm
+    volumes:
+      - ./code:/code
